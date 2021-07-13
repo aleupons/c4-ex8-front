@@ -22,6 +22,7 @@ export const Login = (props) => {
       setError(false);
       const { token } = await resp.json();
       localStorage.setItem("token", token);
+      localStorage.setItem("login", true);
       setLogin(true);
     } else {
       setError(true);

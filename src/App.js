@@ -11,7 +11,7 @@ import { Llistat } from "./pagines/Llistat";
 import { Login } from "./pagines/Login";
 
 function App() {
-  const [login, setLogin] = useState(false);
+  const [login, setLogin] = useState(localStorage.getItem("login") || false);
 
   return (
     <div className="container-fluid">

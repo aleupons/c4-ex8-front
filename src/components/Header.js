@@ -5,6 +5,7 @@ export const Header = (props) => {
 
   const sortir = () => {
     localStorage.removeItem("token");
+    localStorage.removeItem("login");
     setLogin(false);
   };
 
