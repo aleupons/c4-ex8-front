@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 export const Llistat = () => {
   const [items, setItems] = useState([]);
 
-  const llistarItems = async () => {
+  const llistarItems = useCallback(async () => {
     const token = localStorage.getItem("token");
     if (!token) {
       return;
@@ -17,16 +17,23 @@ export const Llistat = () => {
       }
     );
     const items = await resp.json();
-    setItems(items.dades);
-  };
-  llistarItems();
+    setItems(items);
+  }, []);
+
+  useEffect(llistarItems, [llistarItems]);
 
   return (
     <section>
       <h2>Els teus ítems</h2>
       <ul>
         {items.map((item) => (
-          <li key={item}>{item}</li>
+          <li key={item._id}>
+            {item.nom}
+            <p>
+              Utilitat: {item.utilitat} <br></br>
+              {item.descripcio}
+            </p>
+          </li>
         ))}
       </ul>
     </section>

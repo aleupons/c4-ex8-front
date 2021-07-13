@@ -8,7 +8,6 @@ export const Login = (props) => {
 
   const entrar = async (usuari, contrassenya) => {
     const credencials = { usuari, contrassenya };
-    console.log(credencials);
     const resp = await fetch(
       "https://c4-ex8-back.herokuapp.com/usuaris/login",
       {
