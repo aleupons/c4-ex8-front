@@ -17,26 +17,24 @@ function App() {
     <div className="container-fluid">
       <Router>
         <Header login={login} setLogin={setLogin} />
-        <body>
-          <Switch>
-            <Route path="/" exact>
-              <Redirect to="/principal" />
-              {!login && <Redirect to="/login" />}
-            </Route>
-            <Route path="/principal" exact>
-              <Inici />
-              {!login && <Redirect to="/login" />}
-            </Route>
-            <Route path="/llistat" exact>
-              <Llistat />
-              {!login && <Redirect to="/login" />}
-            </Route>
-            <Route path="/login" exact>
-              <Login />
-              {login && <Redirect to="/principal" />}
-            </Route>
-          </Switch>
-        </body>
+        <Switch>
+          <Route path="/" exact>
+            <Redirect to="/principal" />
+            {!login && <Redirect to="/login" />}
+          </Route>
+          <Route path="/principal" exact>
+            <Inici />
+            {!login && <Redirect to="/login" />}
+          </Route>
+          <Route path="/llistat" exact>
+            <Llistat />
+            {!login && <Redirect to="/login" />}
+          </Route>
+          <Route path="/login" exact>
+            <Login setLogin={setLogin} />
+            {login && <Redirect to="/principal" />}
+          </Route>
+        </Switch>
       </Router>
     </div>
   );

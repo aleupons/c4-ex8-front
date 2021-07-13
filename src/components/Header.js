@@ -3,6 +3,11 @@ import { Link } from "react-router-dom";
 export const Header = (props) => {
   const { login, setLogin } = props;
 
+  const sortir = () => {
+    localStorage.removeItem("token");
+    setLogin(false);
+  };
+
   return (
     <header>
       <nav>
@@ -14,7 +19,7 @@ export const Header = (props) => {
             <Link to="./llistat">Llistat</Link>
           </li>
           {login && (
-            <li className="p-2" onClick={() => setLogin(false)}>
+            <li className="p-2" onClick={sortir}>
               <Link to="./principal">Logout</Link>
             </li>
           )}
